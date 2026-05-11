@@ -1,25 +1,19 @@
 #!/usr/bin/env python3
 """
 鸿钧桥接服务 - 让桌面宠物实时反映 Hermes Agent 的状态
-监听 :9101，提供宠物所需的实时状态 API
+监听 :9101，提供宠物所需的实时状态 API。
 
-检测机制（四层，每1.5秒轮询一次）:
-1. 网关日志监控: "inbound message" → thinking, "response ready" → responding
-2. Hermes API: is_streaming=true → thinking, is_streaming=false → responding
-3. CLI 会话监控: 监控会话文件变化 → 自动同步思考/回复状态
-4. 网关心跳: systemctl is-active → online/offline
+这个版本保留了手动推送状态的接口，适合 Windows 本地联动：
+- Python 语音桌宠可以主动 POST /think、/bubble、/reply
+- C# 桌宠通过 GET /status 轮询状态并更新表情和气泡
 
-新增: CLI 会话检测层
-- 自动发现最新会话文件
-- 用户新消息 → thinking 状态
-- AI 新回复 → responding + 自动推气泡
+如果本机上存在 Hermes/CLI 相关日志，也可以继续作为补充信号读取；但在纯 Windows 本地模式下，桥接服务本身不会依赖 systemctl。
 """
 import http.server
 import json
 import os
 import glob
 import time
-import subprocess
 import threading
 from collections import deque
 
@@ -40,7 +34,7 @@ class HermesMonitor:
         self.last_reply_time = ""
         self.bubble_expire = 0
         self.last_log_size = 0
-        self.online = False
+        self.online = True
         self._lock = threading.Lock()
         self._running = True
         self._last_think_time = 0
@@ -60,7 +54,6 @@ class HermesMonitor:
         """持续监控 Hermes 状态"""
         while self._running:
             try:
-                self._check_gateway()
                 self._check_log_activity()
                 self._check_api()
                 self._check_cli_session()
@@ -69,26 +62,8 @@ class HermesMonitor:
             time.sleep(POLL_INTERVAL)
 
     def _check_gateway(self):
-        """检查网关是否在线"""
-        try:
-            result = subprocess.run(
-                ["systemctl", "--user", "is-active", "hermes-gateway"],
-                capture_output=True, text=True, timeout=3
-            )
-            with self._lock:
-                was_offline = not self.online
-                self.online = (result.stdout.strip() == "active")
-                if was_offline and self.online:
-                    self.mood = "happy"
-                    self.bubble = ""
-                    self.bubble_expire = 0
-                elif not self.online:
-                    self.mood = "sleepy"
-                    self.status = "offline"
-        except:
-            with self._lock:
-                self.online = False
-                self.status = "offline"
+        """保留兼容接口；Windows 本地模式下不再依赖 systemctl。"""
+        return
 
     def _check_log_activity(self):
         """检测日志变化来判断是否在思考/回复"""
@@ -334,7 +309,7 @@ class BridgeHandler(http.server.BaseHTTPRequestHandler):
 
 def serve():
     server = http.server.HTTPServer(("0.0.0.0", PORT), BridgeHandler)
-    print(f"鸿钧桥接服务 :{PORT}")
+    print(f"鸿钧桥接服务已启动 :{PORT}")
     server.serve_forever()
 
 

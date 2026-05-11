@@ -5,17 +5,19 @@
 
 import tkinter as tk
 from tkinter import messagebox, simpledialog
+import json
 import threading
 import time
 from PIL import Image, ImageTk, ImageSequence
 import os
 import random
 import re
+from urllib import request
 
 from deepseek_api import DeepSeekAPI
 from voice_handler_local import LocalVoiceHandler  # 改为使用本地语音识别
 from edge_tts_handler import EdgeTTSHandler
-from config import WINDOW_TITLE
+from config import WINDOW_TITLE, BRIDGE_URL, BRIDGE_TIMEOUT
 
 class VoicePet:
     def __init__(self):
@@ -28,6 +30,7 @@ class VoicePet:
         # 状态控制
         self.is_processing = False
         self.is_speaking = False
+        self.bridge_last_error = ""
         
         # 连续动画控制
         self.idle_animations = ["基础01.gif", "基础02.gif", "基础03.gif", "基础04.gif", "基础05.gif"]
@@ -89,6 +92,42 @@ class VoicePet:
         random.shuffle(self.animation_queue)
         self.current_animation_index = 0
         print(f"🔀 动画播放顺序: {' -> '.join(self.animation_queue)}")
+
+    def _post_bridge(self, path, payload=None):
+        """把当前状态推给 C# 桌宠桥接服务。"""
+        if not BRIDGE_URL:
+            return False
+
+        body = json.dumps(payload or {}).encode("utf-8")
+        req = request.Request(
+            BRIDGE_URL + path,
+            data=body,
+            headers={"Content-Type": "application/json; charset=utf-8"},
+            method="POST",
+        )
+
+        try:
+            with request.urlopen(req, timeout=BRIDGE_TIMEOUT) as resp:
+                resp.read()
+            self.bridge_last_error = ""
+            return True
+        except Exception as exc:
+            self.bridge_last_error = str(exc)
+            return False
+
+    def bridge_thinking(self):
+        """通知桥接服务：正在思考。"""
+        self._post_bridge("/think")
+
+    def bridge_bubble(self, text, duration=8):
+        """通知桥接服务：显示气泡。"""
+        if text:
+            self._post_bridge("/bubble", {"text": text, "duration": duration})
+
+    def bridge_reply(self, text):
+        """通知桥接服务：推送一条回复气泡。"""
+        if text:
+            self._post_bridge("/reply", {"text": text})
     
     def load_pet_image(self):
         """加载桌宠图片（支持动画GIF）"""
@@ -413,6 +452,7 @@ class VoicePet:
         
         # 更新活动时间
         self.update_activity()
+        self.bridge_thinking()
         self.root.after(0, lambda: self.process_voice_input(text))
         
     def update_activity(self):
@@ -433,6 +473,7 @@ class VoicePet:
         
         def process_thread():
             try:
+                self.bridge_thinking()
                 # 获取AI回复
                 response = self.get_ai_response(text)
                 
@@ -440,6 +481,8 @@ class VoicePet:
                     # 清理AI回复
                     emotion, cleaned_response = self.extract_emotion_from_response(response)
                     print(f"🤖 AI回复: {cleaned_response}")
+
+                    self.bridge_reply(cleaned_response)
                     
                     # 播放表情动画
                     self.play_emotion_animation(emotion)
@@ -578,7 +621,9 @@ class VoicePet:
         self.is_speaking = True
         
         def greeting_thread():
-            self.tts.speak("你好主人！我是笨逼，你的语音桌宠~")
+            greeting = "你好主人！我是笨逼，你的语音桌宠~"
+            self.bridge_bubble(greeting)
+            self.tts.speak(greeting)
             
             # 等待TTS播放完成
             while self.tts.is_speaking:
@@ -689,6 +734,8 @@ class VoicePet:
         if not self.is_processing and not self.is_speaking:
             phrase = random.choice(self.idle_phrases)
             print(f"😴 闲置骚扰: {phrase}")
+
+            self.bridge_bubble(phrase)
             
             # 不再停止监听，改为设置speaking标志
             # self.voice.stop_listening()  # 移除此行

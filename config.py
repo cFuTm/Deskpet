@@ -23,3 +23,7 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1/chat/completions"
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 600
 WINDOW_TITLE = "AI桌宠"
+
+# 桌面宠物桥接服务
+BRIDGE_URL = "http://localhost:9101"
+BRIDGE_TIMEOUT = 1.5
