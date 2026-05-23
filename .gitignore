@@ -2,6 +2,8 @@ __pycache__/
 *.py[cod]
 
 vosk-model-cn.zip
+vosk-model-small-cn-0.22.zip
+vosk_model_cn/
 
 # .gitignore
 
