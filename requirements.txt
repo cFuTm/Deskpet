@@ -8,3 +8,5 @@ opencv-python>=4.8.0
 rembg>=2.0.50
 numpy>=1.24.0
 vosk>=0.3.45
+edge-tts>=6.1.9
+pygame>=2.5.0

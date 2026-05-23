@@ -1,29 +1,24 @@
-# 配置文件
+"""
+桌宠配置文件。
+包含 API 密钥、模型参数、GUI 设置和桌宠人格等全局配置。
+"""
 import os
 
-# DeepSeek API 配置
-def get_api_key():
-    """从key.txt文件读取API key"""
-    key_file = os.path.join(os.path.dirname(__file__), 'key.txt')
-    try:
-        if os.path.exists(key_file):
-            with open(key_file, 'r', encoding='utf-8') as f:
-                key = f.read().strip()
-                if key:
-                    return key
-        return None
-    except Exception as e:
-        print(f"读取API key失败: {e}")
-        return None
+# ====== 文本对话模型 ======
+# 填写你的 API key（直接改下面字符串，或通过环境变量 CHAT_API_KEY 设置）
+CHAT_API_KEY = os.getenv("CHAT_API_KEY", "sk-020819f1cf30441bae5d5cbe7d8ef683")
+CHAT_BASE_URL = os.getenv("CHAT_BASE_URL", "https://api.deepseek.com")
+CHAT_MODEL = os.getenv("CHAT_MODEL", "deepseek-v4-pro")
 
-DEEPSEEK_API_KEY = get_api_key()
-DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1/chat/completions"
-
-# GUI 配置
+# ====== GUI 配置 ======
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 600
-WINDOW_TITLE = "AI桌宠"
+WINDOW_TITLE = "可爱桌宠"
 
-# 桌面宠物桥接服务
+# ====== 桌宠人格与语音唤醒配置 ======
+PET_NAME = "小鲸"
+WAKE_TIMEOUT = 15
+
+# ====== 桌面宠物桥接服务 ======
 BRIDGE_URL = "http://localhost:9101"
 BRIDGE_TIMEOUT = 1.5

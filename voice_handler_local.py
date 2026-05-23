@@ -8,12 +8,12 @@ import pyaudio
 import vosk
 import pyttsx3
 import threading
-import queue
 import time
 import os
 import requests
 import zipfile
 from pathlib import Path
+
 
 class LocalVoiceHandler:
     def __init__(self):
@@ -22,7 +22,9 @@ class LocalVoiceHandler:
         
         # 模型路径
         self.model_path = Path("vosk_model_cn")
-        self.model_url = "https://alphacephei.com/vosk/models/vosk-model-cn-0.22.zip"
+        self.model_url = "https://alphacephei.com/vosk/models/vosk-model-small-cn-0.22.zip"
+        self.local_model_dir = Path("vosk-model-small-cn-0.22")
+        self.local_model_zip = Path("vosk-model-small-cn-0.22.zip")
         
         # 音频参数 - 必须在setup_vosk_model之前定义
         self.format = pyaudio.paInt16
@@ -55,7 +57,9 @@ class LocalVoiceHandler:
         try:
             # 检查模型是否存在
             if not self.model_path.exists():
-                print("🔄 首次使用，正在下载中文语音模型...")
+                self.prepare_local_model()
+            if not self.model_path.exists():
+                print("🔄 未检测到本地模型，正在联网下载中文语音模型...")
                 self.download_chinese_model()
             
             # 加载模型
@@ -70,11 +74,40 @@ class LocalVoiceHandler:
         except Exception as e:
             print(f"❌ 模型设置失败: {str(e)}")
             print("💡 请尝试手动下载模型或检查网络连接")
+
+    def prepare_local_model(self):
+        """优先使用本地模型目录或zip，不存在时再走联网下载。"""
+        try:
+            if self.local_model_dir.exists() and self.local_model_dir.is_dir():
+                print(f"📁 检测到本地模型目录: {self.local_model_dir}")
+                if self.model_path.exists():
+                    return
+                self.local_model_dir.rename(self.model_path)
+                print(f"✅ 已使用本地目录并重命名为: {self.model_path}")
+                return
+
+            if self.local_model_zip.exists() and self.local_model_zip.is_file():
+                print(f"📦 检测到本地模型压缩包: {self.local_model_zip}")
+                with zipfile.ZipFile(self.local_model_zip, 'r') as zip_ref:
+                    zip_ref.extractall(".")
+
+                if self.local_model_dir.exists() and self.local_model_dir.is_dir():
+                    self.local_model_dir.rename(self.model_path)
+                    print(f"✅ 已从本地zip解压并准备模型: {self.model_path}")
+                    return
+
+                for item in Path(".").iterdir():
+                    if item.is_dir() and item.name.startswith("vosk-model-small-cn"):
+                        item.rename(self.model_path)
+                        print(f"✅ 已从本地zip解压并准备模型: {self.model_path}")
+                        return
+        except Exception as e:
+            print(f"⚠️ 本地模型预处理失败: {str(e)}")
     
     def download_chinese_model(self):
         """下载中文语音模型"""
         try:
-            model_zip = "vosk-model-cn.zip"
+            model_zip = str(self.local_model_zip)
             
             print("⬇️ 正在下载中文语音模型（约40MB）...")
             print("🌐 下载地址：vosk官方中文模型")
@@ -104,7 +137,7 @@ class LocalVoiceHandler:
             # 重命名文件夹
             extracted_folder = None
             for item in Path(".").iterdir():
-                if item.is_dir() and item.name.startswith("vosk-model-cn"):
+                if item.is_dir() and item.name.startswith("vosk-model-small-cn"):
                     extracted_folder = item
                     break
             
