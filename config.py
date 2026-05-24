@@ -6,7 +6,7 @@ import os
 
 # ====== 文本对话模型 ======
 # 填写你的 API key（直接改下面字符串，或通过环境变量 CHAT_API_KEY 设置）
-CHAT_API_KEY = os.getenv("CHAT_API_KEY", "sk-020819f1cf30441bae5d5cbe7d8ef683")
+CHAT_API_KEY = os.getenv("CHAT_API_KEY", "yourkey")
 CHAT_BASE_URL = os.getenv("CHAT_BASE_URL", "https://api.deepseek.com")
 CHAT_MODEL = os.getenv("CHAT_MODEL", "deepseek-v4-pro")
 
