@@ -1,0 +1,344 @@
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'ChillRoundM';
+  src: url('../assets/ChillRoundM.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-size: 16px;
+  --background: #FBF9F6;
+  --foreground: #3C3530;
+  --card: #FEF9F1;
+  --card-foreground: #3C3530;
+  --popover: #FEF9F1;
+  --popover-foreground: #3C3530;
+
+  /* === 修改：主色调整为偏米黄的柔和暖橙色 === */
+  --primary: #E58A66;
+  /* 降低了原先橙色的锐利度，带有一点陶土/米黄泥土感的暖橙 */
+  --primary-foreground: #FBF9F6;
+
+  /* === 修改：辅助色/静音色可微调以呼应低饱和度蓝（可选，这里保持整体温和） === */
+  --secondary: #EFECE8;
+  --secondary-foreground: #3C3530;
+  --muted: #EFECE8;
+  --muted-foreground: #8B8580;
+  --accent: #EFECE8;
+  --accent-foreground: #3C3530;
+
+  --destructive: #d4183d;
+  --destructive-foreground: #FEF9F1;
+
+  /* === 修改：温和的低饱和度蓝色 === */
+  --success: #6A8EAE;
+  /* 如果你想用蓝色代替原先的青绿色作为成功/正向提示 */
+  --success-foreground: #FEF9F1;
+
+  --border: rgba(60, 53, 48, 0.1);
+  --input: transparent;
+  --input-background: #FBF9F6;
+  --switch-background: #EFECE8;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  -webkit-text-stroke: 0.2px currentColor;
+
+  /* === 修改：跟随主色的光晕环 === */
+  --ring: #E58A66;
+
+  /* === 修改：数据图表配色序列（暖橙与低饱和蓝交错） === */
+  --chart-1: #E58A66;
+  /* 主色：米黄深橙 */
+  --chart-2: #6A8EAE;
+  /* 辅色：温和低饱和蓝（雾蓝/牛仔蓝） */
+  --chart-3: #F0B299;
+  /* 浅主色 */
+  --chart-4: #9CB7CD;
+  /* 浅辅色 */
+  --chart-5: #F7DCD0;
+  /* 极浅橙 */
+
+  --radius: 0.75rem;
+
+  /* === 修改：边栏状态跟随主副色 === */
+  --sidebar: #FEF9F1;
+  --sidebar-foreground: #3C3530;
+  --sidebar-primary: #E58A66;
+  --sidebar-primary-foreground: #FEF9F1;
+  --sidebar-accent: #FEF9F1;
+  --sidebar-accent-foreground: #3C3530;
+  --sidebar-border: rgba(60, 53, 48, 0.08);
+  --sidebar-ring: #E58A66;
+}
+
+.dark {
+  --background: #111827;
+  --foreground: #F9FAFB;
+
+  /* === 修改：暗色模式下的卡片稍微带一点点低饱和蓝灰底，比纯黑更有质感 === */
+  --card: #1E232D;
+  --card-foreground: #FEF9F1;
+  --popover: #1F2937;
+  --popover-foreground: #F9FAFB;
+
+  /* === 修改：暗色模式主色（保持与亮色一致或微调高亮） === */
+  --primary: #FF9E79;
+  /* 适当提高了一点明度，确保暗色模式下的可读性 */
+  --primary-foreground: #111827;
+
+  --secondary: #374151;
+  --secondary-foreground: #F9FAFB;
+  --muted: #374151;
+  --muted-foreground: #9CA3AF;
+  --accent: #374151;
+  --accent-foreground: #F9FAFB;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* === 修改：暗色模式下的低饱和蓝 === */
+  --success: #7FA7CE;
+  --success-foreground: #111827;
+
+  --border: rgba(249, 250, 251, 0.1);
+  --input: transparent;
+  --input-background: #1F2937;
+  --switch-background: #374151;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* === 修改：跟随暗色主色 === */
+  --ring: #FF9E79;
+
+  /* === 修改：暗色模式图表色 === */
+  --chart-1: #FF9E79;
+  --chart-2: #7FA7CE;
+  /* 温和低饱和蓝 */
+  --chart-3: #FFBCA3;
+  --chart-4: #A5C2DC;
+  --chart-5: #FFDCD0;
+
+  --radius: 0.75rem;
+
+  /* === 修改：暗色边栏 === */
+  --sidebar: #1F2937;
+  --sidebar-foreground: #F9FAFB;
+  --sidebar-primary: #FF9E79;
+  --sidebar-primary-foreground: #111827;
+  --sidebar-accent: #374151;
+  --sidebar-accent-foreground: #F9FAFB;
+  --sidebar-border: rgba(249, 250, 251, 0.1);
+  --sidebar-ring: #FF9E79;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: 'ChillRoundM', 'PingFang SC', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    background: rgba(255, 250, 242, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glass {
+    background: rgba(31, 41, 55, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    /* 将原本的 0.9 降低（例如改成 0.4）。数值越小，组件越透明，背后的图片越清晰 */
+    background: rgba(249, 241, 230, 0.4);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    /* 可选：为了让卡片边缘在透明状态下更好看，可以加一层微弱的边框 */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glass-strong {
+    /* 暗色模式同理，将原本的 0.9 降低（例如改成 0.4） */
+    background: rgba(31, 41, 55, 0.4);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Breathing animation */
+  @keyframes breathe {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+
+  .animate-breathe {
+    animation: breathe 3s ease-in-out infinite;
+  }
+
+  /* Float animation */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Ripple effect */
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  .animate-ripple {
+    animation: ripple 0.6s ease-out;
+  }
+
+  /* Gradient animation */
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}

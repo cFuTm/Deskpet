@@ -8,3 +8,7 @@ vosk_model_cn/
 # .gitignore
 
 .vscode/
+
+frontend/node_modules/
+frontend/dist/
+frontend/dist.zip
