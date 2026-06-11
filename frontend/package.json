@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "electron:build": "electron-builder"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
@@ -68,6 +69,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.2",
     "tailwindcss": "4.1.12",
     "vite": "6.3.5"
   },

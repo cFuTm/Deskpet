@@ -131,7 +131,7 @@ export function CompanionReport() {
           </div>
         </div>
         <p className="text-xs text-muted-foreground mt-3">
-          再陪伴 5 小时解锁新动作"撒娇"
+          再陪伴 5 小时解锁新动作"睡眠"
         </p>
       </motion.div>
     </motion.div>

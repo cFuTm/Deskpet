@@ -6,10 +6,13 @@ import { Upload, Image as ImageIcon, Sparkles, Heart, Star, RotateCcw } from "lu
 const petActions = [
   { id: "idle", name: "呼吸", description: "静止时的默认状态", color: "#76A072" },
   { id: "thinking", name: "思考", description: "处理消息时的动作", color: "#9CA3AF" },
-  { id: "talking", name: "说话", description: "回复用户时的动作", color: "#FF8E6E" },
-  { id: "clicked", name: "被点击", description: "被鼠标点击时的反应", color: "#FFB088" },
+  { id: "excited", name: "开心", description: "收到称赞时的表现", color: "#FFD700" },
+  { id: "surprised", name: "惊讶", description: "受到惊吓或发现新奇事物", color: "#FFA500" },
+  { id: "sleep", name: "睡眠", description: "长时间未交互时的状态", color: "#4B0082" },
+  { id: "angry", name: "生气", description: "被频繁打扰或拒绝时的反应", color: "#EF4444" },
   { id: "shy", name: "害羞", description: "特定互动时的表情", color: "#FFB5D5" },
-  { id: "excited", name: "兴奋", description: "收到称赞时的表现", color: "#FFD700" },
+  { id: "sad", name: "难过", description: "心情低落或负面反馈时的表现", color: "#3B82F6" },
+  { id: "scornful", name: "轻蔑", description: "对特定操作的傲娇反应", color: "#8B5CF6" },
 ];
 
 export function AppearancePage() {
