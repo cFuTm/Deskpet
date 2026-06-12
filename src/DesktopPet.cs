@@ -808,7 +808,7 @@ namespace DesktopPetApp
                 string[] msgs = { "你好呀！", "今天怎么样～", "我在哦", "盯——", "继续摸鱼中..." };
                 ShowLocalBubble(msgs[_rng.Next(msgs.Length)]);
             });
-            menu.Items.Add("桌宠状态", null, (s, e) => {
+            menu.Items.Add("TalkBuddy状态", null, (s, e) => {
                 if (_bridgeOnline)
                     ShowLocalBubble(_petStatus.Equals("idle") ? "闲着～" :
                                     _petStatus.Equals("thinking") ? "正在思考..." :
@@ -826,7 +826,7 @@ namespace DesktopPetApp
                 this.Location = new Point(screen.Right - PET_W - 20, screen.Bottom - PET_H - 30);
                 ShowLocalBubble("回到原位～");
             });
-            menu.Items.Add("退出桌宠", null, (s, e) => {
+            menu.Items.Add("退出TalkBuddy", null, (s, e) => {
                 ShowLocalBubble("拜拜～", 1);
                 var t = new System.Windows.Forms.Timer { Interval = 500 };
                 t.Tick += (ss, ee) => { t.Stop(); Application.Exit(); };

@@ -1,18 +1,12 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { Lightbulb, MessageSquare, Mic, Settings2 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { Switch } from "../ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
-import { Mic, MessageSquare, Lightbulb, Settings2 } from "lucide-react";
+import { Switch } from "../ui/switch";
 
 export function AdvancedSettingsPage() {
   const [wakeWord, setWakeWord] = useState("小艾");
@@ -28,14 +22,10 @@ export function AdvancedSettingsPage() {
         transition={{ duration: 0.5 }}
       >
         <h2 className="mb-2">高级设置</h2>
-<<<<<<< HEAD
-        {/* <p className="text-muted-foreground">让桌宠更懂你的心意</p> */}
-=======
-        <p className="text-muted-foreground">让桌宠更懂你的心意</p>
->>>>>>> be28e4a7ac11de98be10fbbbab996f6970242706
+        {/* <p className="text-muted-foreground">调整语音唤醒、主动互动和桌面端行为。</p> */}
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <div className="space-y-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -56,13 +46,11 @@ export function AdvancedSettingsPage() {
                 <Input
                   id="wake-word"
                   value={wakeWord}
-                  onChange={(e) => setWakeWord(e.target.value)}
+                  onChange={(event) => setWakeWord(event.target.value)}
                   placeholder="自定义唤醒词"
                   className="glass"
                 />
-                <p className="text-xs text-muted-foreground">
-                  说出唤醒词即可激活桌宠
-                </p>
+                <p className="text-xs text-muted-foreground">说出唤醒词即可激活TalkBuddy。</p>
               </div>
 
               <div className="space-y-2">
@@ -107,28 +95,18 @@ export function AdvancedSettingsPage() {
             </div>
 
             <div className="pt-4 border-t border-border/50 space-y-3">
-              <motion.div
-                whileHover={{ x: 2 }}
-                className="flex items-center justify-between p-3 glass rounded-2xl"
-              >
+              <motion.div whileHover={{ x: 2 }} className="flex items-center justify-between p-3 glass rounded-2xl">
                 <div className="space-y-0.5 flex-1">
                   <Label>启用语音唤醒</Label>
-                  <p className="text-xs text-muted-foreground">
-                    开启后可通过语音激活桌宠
-                  </p>
+                  <p className="text-xs text-muted-foreground">开启后可通过语音激活TalkBuddy。</p>
                 </div>
                 <Switch defaultChecked />
               </motion.div>
 
-              <motion.div
-                whileHover={{ x: 2 }}
-                className="flex items-center justify-between p-3 glass rounded-2xl"
-              >
+              <motion.div whileHover={{ x: 2 }} className="flex items-center justify-between p-3 glass rounded-2xl">
                 <div className="space-y-0.5 flex-1">
                   <Label>唤醒后自动聆听</Label>
-                  <p className="text-xs text-muted-foreground">
-                    唤醒后立即开始语音识别
-                  </p>
+                  <p className="text-xs text-muted-foreground">唤醒后立即开始语音识别。</p>
                 </div>
                 <Switch defaultChecked />
               </motion.div>
@@ -146,18 +124,9 @@ export function AdvancedSettingsPage() {
               <h4>使用提示</h4>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">•</span>
-                <span>在安静环境下效果更佳</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">•</span>
-                <span>灵敏度过高可能导致误触发</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">•</span>
-                <span>建议使用2-3个字的唤醒词</span>
-              </li>
+              <li>在安静环境下识别效果更好。</li>
+              <li>灵敏度过高可能导致误触发。</li>
+              <li>建议使用 2 到 3 个字的唤醒词。</li>
             </ul>
           </motion.div>
         </div>
@@ -173,7 +142,7 @@ export function AdvancedSettingsPage() {
               <div className="w-10 h-10 rounded-xl bg-success/20 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-success" />
               </div>
-              <h3>主动交互</h3>
+              <h3>主动互动</h3>
             </div>
 
             <div className="space-y-4">
@@ -183,15 +152,9 @@ export function AdvancedSettingsPage() {
               >
                 <div className="space-y-0.5 flex-1">
                   <Label>开启主动搭话</Label>
-                  <p className="text-xs text-muted-foreground">
-                    桌宠会在适当时机主动与你对话
-                  </p>
+                  <p className="text-xs text-muted-foreground">TalkBuddy会在合适时机主动与你对话。</p>
                 </div>
-                <Switch
-                  checked={autoTalk}
-                  onCheckedChange={setAutoTalk}
-                  className="ml-4"
-                />
+                <Switch checked={autoTalk} onCheckedChange={setAutoTalk} className="ml-4" />
               </motion.div>
 
               <AnimatePresence>
@@ -205,7 +168,7 @@ export function AdvancedSettingsPage() {
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <Label htmlFor="idle-time">无交互触发时间</Label>
+                        <Label htmlFor="idle-time">无互动触发时间</Label>
                         <motion.span
                           key={idleTime[0]}
                           initial={{ scale: 1.2 }}
@@ -229,7 +192,7 @@ export function AdvancedSettingsPage() {
                         <span>60分钟</span>
                       </div>
                       <p className="text-xs text-muted-foreground">
-                        超过设定时间未交互，桌宠会主动打招呼
+                        超过设定时间未互动，TalkBuddy会主动打招呼。
                       </p>
                     </div>
 
@@ -274,28 +237,18 @@ export function AdvancedSettingsPage() {
                   exit={{ opacity: 0 }}
                   className="pt-4 border-t border-border/50 space-y-3"
                 >
-                  <motion.div
-                    whileHover={{ x: 2 }}
-                    className="flex items-center justify-between p-3 glass rounded-2xl"
-                  >
+                  <motion.div whileHover={{ x: 2 }} className="flex items-center justify-between p-3 glass rounded-2xl">
                     <div className="space-y-0.5 flex-1">
                       <Label>工作时段免打扰</Label>
-                      <p className="text-xs text-muted-foreground">
-                        工作时间不主动搭话
-                      </p>
+                      <p className="text-xs text-muted-foreground">工作时间不主动搭话。</p>
                     </div>
                     <Switch />
                   </motion.div>
 
-                  <motion.div
-                    whileHover={{ x: 2 }}
-                    className="flex items-center justify-between p-3 glass rounded-2xl"
-                  >
+                  <motion.div whileHover={{ x: 2 }} className="flex items-center justify-between p-3 glass rounded-2xl">
                     <div className="space-y-0.5 flex-1">
                       <Label>智能话题推荐</Label>
-                      <p className="text-xs text-muted-foreground">
-                        根据你的兴趣推荐话题
-                      </p>
+                      <p className="text-xs text-muted-foreground">根据你的兴趣推荐话题。</p>
                     </div>
                     <Switch defaultChecked />
                   </motion.div>
@@ -318,44 +271,23 @@ export function AdvancedSettingsPage() {
             </div>
 
             <div className="space-y-3">
-              <motion.div
-                whileHover={{ x: 2 }}
-                className="flex items-center justify-between p-3 glass rounded-2xl"
-              >
-                <div className="space-y-0.5 flex-1">
-                  <Label>开机自启动</Label>
-                  <p className="text-xs text-muted-foreground">
-                    系统启动时自动运行
-                  </p>
-                </div>
-                <Switch defaultChecked />
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 2 }}
-                className="flex items-center justify-between p-3 glass rounded-2xl"
-              >
-                <div className="space-y-0.5 flex-1">
-                  <Label>托盘最小化</Label>
-                  <p className="text-xs text-muted-foreground">
-                    关闭窗口时最小化到托盘
-                  </p>
-                </div>
-                <Switch defaultChecked />
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 2 }}
-                className="flex items-center justify-between p-3 glass rounded-2xl"
-              >
-                <div className="space-y-0.5 flex-1">
-                  <Label>数据统计</Label>
-                  <p className="text-xs text-muted-foreground">
-                    收集使用数据以改进体验
-                  </p>
-                </div>
-                <Switch />
-              </motion.div>
+              {[
+                ["开机自启动", "系统启动时自动运行。", true],
+                ["托盘最小化", "关闭窗口时最小化到托盘。", true],
+                ["数据统计", "收集使用数据以改进体验。", false],
+              ].map(([label, description, checked]) => (
+                <motion.div
+                  key={label as string}
+                  whileHover={{ x: 2 }}
+                  className="flex items-center justify-between p-3 glass rounded-2xl"
+                >
+                  <div className="space-y-0.5 flex-1">
+                    <Label>{label}</Label>
+                    <p className="text-xs text-muted-foreground">{description}</p>
+                  </div>
+                  <Switch defaultChecked={Boolean(checked)} />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -368,7 +300,9 @@ export function AdvancedSettingsPage() {
         className="flex justify-end gap-3"
       >
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button variant="outline" className="glass">重置为默认</Button>
+          <Button variant="outline" className="glass">
+            重置为默认
+          </Button>
         </motion.div>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
           <Button>保存所有设置</Button>

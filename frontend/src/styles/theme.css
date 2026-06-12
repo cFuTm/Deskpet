@@ -1,4 +1,4 @@
-@custom-variant dark (&:is(.dark *));
+﻿@custom-variant dark (&:is(.dark *));
 
 @font-face {
   font-family: 'ChillRoundM';
@@ -17,12 +17,12 @@
   --popover: #FEF9F1;
   --popover-foreground: #3C3530;
 
-  /* === 修改：主色调整为偏米黄的柔和暖橙色 === */
+  /* === 淇敼锛氫富鑹茶皟鏁翠负鍋忕背榛勭殑鏌斿拰鏆栨鑹?=== */
   --primary: #E58A66;
-  /* 降低了原先橙色的锐利度，带有一点陶土/米黄泥土感的暖橙 */
+  /* 闄嶄綆浜嗗師鍏堟鑹茬殑閿愬埄搴︼紝甯︽湁涓€鐐归櫠鍦?绫抽粍娉ュ湡鎰熺殑鏆栨 */
   --primary-foreground: #FBF9F6;
 
-  /* === 修改：辅助色/静音色可微调以呼应低饱和度蓝（可选，这里保持整体温和） === */
+  /* === 淇敼锛氳緟鍔╄壊/闈欓煶鑹插彲寰皟浠ュ懠搴斾綆楗卞拰搴﹁摑锛堝彲閫夛紝杩欓噷淇濇寔鏁翠綋娓╁拰锛?=== */
   --secondary: #EFECE8;
   --secondary-foreground: #3C3530;
   --muted: #EFECE8;
@@ -33,9 +33,9 @@
   --destructive: #d4183d;
   --destructive-foreground: #FEF9F1;
 
-  /* === 修改：温和的低饱和度蓝色 === */
+  /* === 淇敼锛氭俯鍜岀殑浣庨ケ鍜屽害钃濊壊 === */
   --success: #6A8EAE;
-  /* 如果你想用蓝色代替原先的青绿色作为成功/正向提示 */
+  /* 濡傛灉浣犳兂鐢ㄨ摑鑹蹭唬鏇垮師鍏堢殑闈掔豢鑹蹭綔涓烘垚鍔?姝ｅ悜鎻愮ず */
   --success-foreground: #FEF9F1;
 
   --border: rgba(60, 53, 48, 0.1);
@@ -46,24 +46,24 @@
   --font-weight-normal: 400;
   -webkit-text-stroke: 0.2px currentColor;
 
-  /* === 修改：跟随主色的光晕环 === */
+  /* === 淇敼锛氳窡闅忎富鑹茬殑鍏夋檿鐜?=== */
   --ring: #E58A66;
 
-  /* === 修改：数据图表配色序列（暖橙与低饱和蓝交错） === */
+  /* === 淇敼锛氭暟鎹浘琛ㄩ厤鑹插簭鍒楋紙鏆栨涓庝綆楗卞拰钃濅氦閿欙級 === */
   --chart-1: #E58A66;
-  /* 主色：米黄深橙 */
+  /* 涓昏壊锛氱背榛勬繁姗?*/
   --chart-2: #6A8EAE;
-  /* 辅色：温和低饱和蓝（雾蓝/牛仔蓝） */
+  /* 杈呰壊锛氭俯鍜屼綆楗卞拰钃濓紙闆捐摑/鐗涗粩钃濓級 */
   --chart-3: #F0B299;
-  /* 浅主色 */
+  /* 娴呬富鑹?*/
   --chart-4: #9CB7CD;
-  /* 浅辅色 */
+  /* 娴呰緟鑹?*/
   --chart-5: #F7DCD0;
-  /* 极浅橙 */
+  /* 鏋佹祬姗?*/
 
   --radius: 0.75rem;
 
-  /* === 修改：边栏状态跟随主副色 === */
+  /* === 淇敼锛氳竟鏍忕姸鎬佽窡闅忎富鍓壊 === */
   --sidebar: #FEF9F1;
   --sidebar-foreground: #3C3530;
   --sidebar-primary: #E58A66;
@@ -78,15 +78,15 @@
   --background: #111827;
   --foreground: #F9FAFB;
 
-  /* === 修改：暗色模式下的卡片稍微带一点点低饱和蓝灰底，比纯黑更有质感 === */
+  /* === 淇敼锛氭殫鑹叉ā寮忎笅鐨勫崱鐗囩◢寰甫涓€鐐圭偣浣庨ケ鍜岃摑鐏板簳锛屾瘮绾粦鏇存湁璐ㄦ劅 === */
   --card: #1E232D;
   --card-foreground: #FEF9F1;
   --popover: #1F2937;
   --popover-foreground: #F9FAFB;
 
-  /* === 修改：暗色模式主色（保持与亮色一致或微调高亮） === */
+  /* === 淇敼锛氭殫鑹叉ā寮忎富鑹诧紙淇濇寔涓庝寒鑹蹭竴鑷存垨寰皟楂樹寒锛?=== */
   --primary: #FF9E79;
-  /* 适当提高了一点明度，确保暗色模式下的可读性 */
+  /* 閫傚綋鎻愰珮浜嗕竴鐐规槑搴︼紝纭繚鏆楄壊妯″紡涓嬬殑鍙鎬?*/
   --primary-foreground: #111827;
 
   --secondary: #374151;
@@ -98,7 +98,7 @@
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 
-  /* === 修改：暗色模式下的低饱和蓝 === */
+  /* === 淇敼锛氭殫鑹叉ā寮忎笅鐨勪綆楗卞拰钃?=== */
   --success: #7FA7CE;
   --success-foreground: #111827;
 
@@ -109,20 +109,20 @@
   --font-weight-medium: 500;
   --font-weight-normal: 400;
 
-  /* === 修改：跟随暗色主色 === */
+  /* === 淇敼锛氳窡闅忔殫鑹蹭富鑹?=== */
   --ring: #FF9E79;
 
-  /* === 修改：暗色模式图表色 === */
+  /* === 淇敼锛氭殫鑹叉ā寮忓浘琛ㄨ壊 === */
   --chart-1: #FF9E79;
   --chart-2: #7FA7CE;
-  /* 温和低饱和蓝 */
+  /* 娓╁拰浣庨ケ鍜岃摑 */
   --chart-3: #FFBCA3;
   --chart-4: #A5C2DC;
   --chart-5: #FFDCD0;
 
   --radius: 0.75rem;
 
-  /* === 修改：暗色边栏 === */
+  /* === 淇敼锛氭殫鑹茶竟鏍?=== */
   --sidebar: #1F2937;
   --sidebar-foreground: #F9FAFB;
   --sidebar-primary: #FF9E79;
@@ -202,23 +202,22 @@
   }
 
   .glass-strong {
-    /* 将原本的 0.9 降低（例如改成 0.4）。数值越小，组件越透明，背后的图片越清晰 */
+    /* 灏嗗師鏈殑 0.9 闄嶄綆锛堜緥濡傛敼鎴?0.4锛夈€傛暟鍊艰秺灏忥紝缁勪欢瓒婇€忔槑锛岃儗鍚庣殑鍥剧墖瓒婃竻鏅?*/
     background: rgba(249, 241, 230, 0.4);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    /* 可选：为了让卡片边缘在透明状态下更好看，可以加一层微弱的边框 */
+    /* 鍙€夛細涓轰簡璁╁崱鐗囪竟缂樺湪閫忔槑鐘舵€佷笅鏇村ソ鐪嬶紝鍙互鍔犱竴灞傚井寮辩殑杈规 */
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
   .dark .glass-strong {
-    /* 暗色模式同理，将原本的 0.9 降低（例如改成 0.4） */
+    /* 鏆楄壊妯″紡鍚岀悊锛屽皢鍘熸湰鐨?0.9 闄嶄綆锛堜緥濡傛敼鎴?0.4锛?*/
     background: rgba(31, 41, 55, 0.4);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     border: 2px solid rgba(255, 255, 255, 0.2);
   }
 
-<<<<<<< HEAD
   .scrollbar-transparent {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
@@ -238,8 +237,6 @@
     border: none;
   }
 
-=======
->>>>>>> be28e4a7ac11de98be10fbbbab996f6970242706
   /* Breathing animation */
   @keyframes breathe {
 
