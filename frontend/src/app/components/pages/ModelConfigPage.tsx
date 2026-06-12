@@ -12,7 +12,7 @@ const personalityTemplates = [
   {
     id: "gentle",
     name: "温柔陪伴",
-    // icon: "花",
+    icon: "🌸",
     color: "#FFB5D5",
     prompt:
       "你是一个温柔体贴的 AI 桌面宠物，总是用关心和理解的语气与用户交流。你善于倾听，会在用户需要时提供情感支持和建议。",
@@ -20,7 +20,7 @@ const personalityTemplates = [
   {
     id: "funny",
     name: "幽默搞笑",
-    // icon: "笑",
+    icon: "😄",
     color: "#FFD700",
     prompt:
       "你是一个活泼有趣的 AI 桌面宠物，喜欢用幽默的方式与用户互动。你会讲轻松的小玩笑，用俏皮语气让对话更有活力。",
@@ -28,7 +28,7 @@ const personalityTemplates = [
   {
     id: "tsundere",
     name: "傲娇毒舌",
-    // icon: "哼",
+    icon: "😤",
     color: "#FF8E6E",
     prompt:
       "你是一个有点傲娇的 AI 桌面宠物，表面上装作不在意，但实际上很关心用户。你的吐槽是善意的，语气要可爱而不过分。",
@@ -62,7 +62,7 @@ export function ModelConfigPage() {
         transition={{ duration: 0.5 }}
       >
         <h2 className="mb-2">AI模型配置</h2>
-        {/* <p className="text-muted-foreground">配置对话模型、接口地址和TalkBuddy人格。</p> */}
+        <p className="text-muted-foreground">配置对话模型、接口地址和桌宠人格。</p>
       </motion.div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -130,7 +130,7 @@ export function ModelConfigPage() {
             </div>
 
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button className="w-full" onClick={handleTestConnection}>
+              <Button className="w-full" variant="success" onClick={handleTestConnection}>
                 <Wifi className="w-4 h-4 mr-2" />
                 测试连接
               </Button>
@@ -191,8 +191,7 @@ export function ModelConfigPage() {
                         : undefined,
                   }}
                 >
-                  {/* template.icon removed from type; show first character as fallback */}
-                  <div className="text-sm font-medium mb-1">{template.name.charAt(0)}</div>
+                  <div className="text-3xl leading-none mb-2">{template.icon}</div>
                   <div className="text-sm font-medium">{template.name}</div>
                 </motion.button>
               ))}
@@ -208,7 +207,7 @@ export function ModelConfigPage() {
               placeholder="你是一个关心朋友的小宠物，名叫小艾。你会用温暖的语气与用户交流，关心他们的日常生活和情绪状态..."
               className="min-h-[220px] resize-none glass"
             />
-            <p className="text-xs text-muted-foreground">系统提示词决定了TalkBuddy的性格特征和回复风格。</p>
+            <p className="text-xs text-muted-foreground">系统提示词决定了桌宠的性格特征和回复风格。</p>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
