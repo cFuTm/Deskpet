@@ -13,7 +13,7 @@ type Page = "dashboard" | "appearance" | "model" | "settings";
 const navigationItems = [
   { id: "dashboard" as Page, name: "状态总览", icon: LayoutDashboard },
   { id: "appearance" as Page, name: "形象管理", icon: Palette },
-  { id: "model" as Page, name: "模型与性格配置", icon: Brain },
+  { id: "model" as Page, name: "模型与性格", icon: Brain },
   { id: "settings" as Page, name: "更多设置", icon: Settings },
 ];
 

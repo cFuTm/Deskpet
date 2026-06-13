@@ -23,7 +23,7 @@ const petActions: PetAction[] = [
   { id: "angry", name: "生气", description: "被频繁打扰或拒绝时的反应", color: "#EF4444", skin: "angry", mood: "angry" },
   { id: "shy", name: "害羞", description: "特定互动时的表情", color: "#FFB5D5", skin: "shy", mood: "shy" },
   { id: "sad", name: "难过", description: "心情低落或负面反馈时的表现", color: "#3B82F6", skin: "sad", mood: "sad" },
-  { id: "scornful", name: "无语", description: "对特定操作的傲娇反应", color: "#8B5CF6", skin: "contempt", mood: "idle" },
+  { id: "scornful", name: "轻蔑", description: "对特定操作的傲娇反应", color: "#8B5CF6", skin: "contempt", mood: "idle" },
 ];
 
 export function AppearancePage() {

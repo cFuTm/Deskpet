@@ -66,6 +66,56 @@ export function AdvancedSettingsPage() {
               </motion.div>
             </div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="glass-strong rounded-3xl p-8 space-y-4 shadow-xl"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
+                <Settings2 className="w-5 h-5 text-foreground" />
+              </div>
+              <h3>其他设置</h3>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                ["开机自启动", "系统启动时自动运行。", true],
+                ["托盘最小化", "关闭窗口时最小化到托盘。", true],
+                ["数据统计", "收集使用数据以改进体验。", false],
+              ].map(([label, description, checked]) => (
+                <motion.div
+                  key={label as string}
+                  whileHover={{ x: 2 }}
+                  className="flex items-center justify-between p-3 glass rounded-2xl"
+                >
+                  <div className="space-y-0.5 flex-1">
+                    <Label>{label}</Label>
+                    <p className="text-xs text-muted-foreground">{description}</p>
+                  </div>
+                  <Switch defaultChecked={Boolean(checked)} />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="flex justify-end gap-3"
+      >
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <Button variant="outline" className="glass">
+            重置为默认
+          </Button>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <Button>保存所有设置</Button>
+        </motion.div>
+      </motion.div>
         </div>
 
         <div className="space-y-6">
@@ -194,57 +244,8 @@ export function AdvancedSettingsPage() {
             </AnimatePresence>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-strong rounded-3xl p-8 space-y-4 shadow-xl"
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-                <Settings2 className="w-5 h-5 text-foreground" />
-              </div>
-              <h3>其他设置</h3>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                ["开机自启动", "系统启动时自动运行。", true],
-                ["托盘最小化", "关闭窗口时最小化到托盘。", true],
-                ["数据统计", "收集使用数据以改进体验。", false],
-              ].map(([label, description, checked]) => (
-                <motion.div
-                  key={label as string}
-                  whileHover={{ x: 2 }}
-                  className="flex items-center justify-between p-3 glass rounded-2xl"
-                >
-                  <div className="space-y-0.5 flex-1">
-                    <Label>{label}</Label>
-                    <p className="text-xs text-muted-foreground">{description}</p>
-                  </div>
-                  <Switch defaultChecked={Boolean(checked)} />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="flex justify-end gap-3"
-      >
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button variant="outline" className="glass">
-            重置为默认
-          </Button>
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button>保存所有设置</Button>
-        </motion.div>
-      </motion.div>
     </div>
   );
 }

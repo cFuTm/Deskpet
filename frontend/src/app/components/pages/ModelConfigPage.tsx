@@ -144,7 +144,7 @@ export function ModelConfigPage() {
             <Brain className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="mb-1">模型与性格配置</h2>
+            <h2 className="mb-1">模型与性格</h2>
           </div>
         </div>
       </motion.div>
@@ -162,12 +162,12 @@ export function ModelConfigPage() {
               <Brain className="w-5 h-5 text-foreground" />
             </div>
             <div>
-              <h3>智能核心设置</h3>
+              <h3>API配置</h3>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="model-input">MODEL</Label>
             <Input
@@ -216,20 +216,16 @@ export function ModelConfigPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_220px] gap-4 items-end">
-
-
-          <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-            <Button
-              className="w-full"
-              variant="default"
-              onClick={handleTestConnection}
-            >
-              <Wifi className="w-4 h-4 mr-2" />
-              试着叫醒它
-            </Button>
-          </motion.div>
-        </div>
+        <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+          <Button
+            className="w-full"
+            variant="default"
+            onClick={handleTestConnection}
+          >
+            <Wifi className="w-4 h-4 mr-2" />
+            试着叫醒它
+          </Button>
+        </motion.div>
       </motion.div>
 
       {/* 下方：性格、说话方式和提示词 */}
@@ -246,7 +242,7 @@ export function ModelConfigPage() {
               <Sparkles className="w-5 h-5 text-success" />
             </div>
             <div>
-              <h3>它的陪伴风格</h3>
+              <h3>陪伴风格</h3>
             </div>
           </div>
 
@@ -374,7 +370,7 @@ export function ModelConfigPage() {
             <DialogTitle>它已经听见你啦</DialogTitle>
             <DialogDescription>
               {testResult?.success
-                ? "智能核心连接成功，可以开始语音陪伴了。"
+                ? "API连接成功，可以开始语音陪伴了。"
                 : "暂时没有连接成功，可以检查密钥或连接地址。"}
             </DialogDescription>
           </DialogHeader>
