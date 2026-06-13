@@ -21,8 +21,7 @@ export function AdvancedSettingsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="mb-2">高级设置</h2>
-        {/* <p className="text-muted-foreground">调整语音唤醒、主动互动和桌面端行为。</p> */}
+        <h2 className="mb-2">更多设置</h2>
       </motion.div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -41,17 +40,6 @@ export function AdvancedSettingsPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="wake-word">唤醒词</Label>
-                <Input
-                  id="wake-word"
-                  value={wakeWord}
-                  onChange={(event) => setWakeWord(event.target.value)}
-                  placeholder="自定义唤醒词"
-                  className="glass"
-                />
-                <p className="text-xs text-muted-foreground">说出唤醒词即可激活TalkBuddy。</p>
-              </div>
 
               <div className="space-y-2">
                 <Label htmlFor="microphone">麦克风设备</Label>
@@ -66,35 +54,9 @@ export function AdvancedSettingsPage() {
                   </SelectContent>
                 </Select>
               </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="sensitivity">唤醒灵敏度</Label>
-                  <motion.span
-                    key={sensitivity[0]}
-                    initial={{ scale: 1.2 }}
-                    animate={{ scale: 1 }}
-                    className="text-sm text-primary font-medium"
-                  >
-                    {sensitivity[0]}%
-                  </motion.span>
-                </div>
-                <Slider
-                  id="sensitivity"
-                  value={sensitivity}
-                  onValueChange={setSensitivity}
-                  max={100}
-                  step={1}
-                  className="py-2"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>不敏感</span>
-                  <span>非常敏感</span>
-                </div>
-              </div>
             </div>
 
-            <div className="pt-4 border-t border-border/50 space-y-3">
+            <div className="space-y-3">
               <motion.div whileHover={{ x: 2 }} className="flex items-center justify-between p-3 glass rounded-2xl">
                 <div className="space-y-0.5 flex-1">
                   <Label>启用语音唤醒</Label>
@@ -102,32 +64,7 @@ export function AdvancedSettingsPage() {
                 </div>
                 <Switch defaultChecked />
               </motion.div>
-
-              <motion.div whileHover={{ x: 2 }} className="flex items-center justify-between p-3 glass rounded-2xl">
-                <div className="space-y-0.5 flex-1">
-                  <Label>唤醒后自动聆听</Label>
-                  <p className="text-xs text-muted-foreground">唤醒后立即开始语音识别。</p>
-                </div>
-                <Switch defaultChecked />
-              </motion.div>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass rounded-3xl p-6 bg-gradient-to-br from-primary/10 to-success/10 animate-gradient"
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <Lightbulb className="w-4 h-4 text-primary" />
-              <h4>使用提示</h4>
-            </div>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>在安静环境下识别效果更好。</li>
-              <li>灵敏度过高可能导致误触发。</li>
-              <li>建议使用 2 到 3 个字的唤醒词。</li>
-            </ul>
           </motion.div>
         </div>
 

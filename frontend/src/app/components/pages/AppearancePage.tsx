@@ -23,7 +23,7 @@ const petActions: PetAction[] = [
   { id: "angry", name: "生气", description: "被频繁打扰或拒绝时的反应", color: "#EF4444", skin: "angry", mood: "angry" },
   { id: "shy", name: "害羞", description: "特定互动时的表情", color: "#FFB5D5", skin: "shy", mood: "shy" },
   { id: "sad", name: "难过", description: "心情低落或负面反馈时的表现", color: "#3B82F6", skin: "sad", mood: "sad" },
-  { id: "scornful", name: "轻蔑", description: "对特定操作的傲娇反应", color: "#8B5CF6", skin: "contempt", mood: "idle" },
+  { id: "scornful", name: "傲娇", description: "对特定操作的傲娇反应", color: "#8B5CF6", skin: "contempt", mood: "idle" },
 ];
 
 export function AppearancePage() {
@@ -196,9 +196,8 @@ export function AppearancePage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`glass-strong rounded-3xl p-8 text-center transition-all shadow-xl cursor-pointer select-none ${
-              dragActive ? "ring-2 ring-primary scale-[1.02] bg-primary/5" : ""
-            }`}
+            className={`glass-strong rounded-3xl p-8 text-center transition-all shadow-xl cursor-pointer select-none ${dragActive ? "ring-2 ring-primary scale-[1.02] bg-primary/5" : ""
+              }`}
             onDragEnter={handleDrag}
             onDragLeave={handleDrag}
             onDragOver={handleDrag}
@@ -237,15 +236,16 @@ export function AppearancePage() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 + 0.3 }}
-                  whileHover={{ x: 4, scale: 1.01 }}
+                  whileHover={{ x: 2 }}
                   whileTap={{ scale: 0.99 }}
-                  className={`glass rounded-2xl p-4 cursor-pointer transition-all relative overflow-hidden ${
-                    selectedAction === action.id ? "ring-2 ring-primary" : ""
-                  }`}
+                  className={`glass rounded-2xl p-4 cursor-pointer transition-all relative overflow-hidden ${selectedAction === action.id ? "ring-2 ring-primary ring-inset" : ""
+                    }`}
                   onClick={() => setSelectedAction(action.id)}
                   style={{
                     background:
-                      selectedAction === action.id ? `linear-gradient(135deg, ${action.color}15, transparent)` : undefined,
+                      selectedAction === action.id
+                        ? `linear-gradient(135deg, ${action.color}15, transparent)`
+                        : undefined,
                   }}
                 >
                   <div className="flex items-center justify-between relative z-10 gap-3">

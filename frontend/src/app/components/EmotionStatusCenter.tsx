@@ -101,6 +101,10 @@ export function EmotionStatusCenter() {
     }, 2500);
   };
 
+  const handleVoicePreview = () => {
+    setBubbleText("爱你哦~");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -163,59 +167,18 @@ export function EmotionStatusCenter() {
               whileTap={{ scale: 0.95 }}
               className="cursor-pointer p-2 rounded-xl bg-background/40 border"
             >
-              <Heart className="w-5 h-5 text-primary fill-primary/20" />
+              <motion.button
+                whileHover={{ scale: 1.06, rotate: 4 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={handleVoicePreview}
+                className="shrink-0 px-2 py-2 rounded-2xl bg-background/45 border glass text-xs font-medium flex items-center gap-2"
+              >
+                <Heart className="w-5 h-5 text-primary fill-primary/20" />
+              </motion.button>
             </motion.div>
           </div>
 
-          <div className="space-y-4">
-            <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-medium flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: config.color }} />
-                  {config.label}
-                </span>
-                <span className="text-xs text-muted-foreground font-mono">活跃度 {activity}%</span>
-              </div>
-              <div className="h-2.5 bg-secondary rounded-full overflow-hidden p-[2px]">
-                <motion.div
-                  className="h-full rounded-full"
-                  style={{ backgroundColor: config.color }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${activity}%` }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                />
-              </div>
-            </div>
-
-            <div className="flex gap-2 p-1.5 bg-muted/30 rounded-xl border">
-              {(["happy", "calm", "sleepy", "excited"] as Emotion[]).map((emotionType) => {
-                const option = emotionConfig[emotionType];
-                const OptionIcon = option.icon;
-                return (
-                  <motion.button
-                    key={emotionType}
-                    type="button"
-                    onClick={() => handleEmotionChange(emotionType)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center justify-center gap-1.5 ${
-                      emotion === emotionType
-                        ? "shadow-sm text-foreground border bg-background/80"
-                        : "text-muted-foreground opacity-60 hover:opacity-100"
-                    }`}
-                    style={{
-                      borderLeft: emotion === emotionType ? `3px solid ${option.color}` : undefined,
-                    }}
-                  >
-                    <OptionIcon className="w-3.5 h-3.5" />
-                    {option.label.slice(0, 2)}
-                  </motion.button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3">
+          <div className="pt-6 grid grid-cols-3 gap-3">
             {[
               { label: "陪伴时长", value: "2.5h", icon: Sun },
               { label: "亲密度", value: "Lv.8", icon: Heart },
