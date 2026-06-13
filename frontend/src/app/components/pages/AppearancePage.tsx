@@ -23,7 +23,7 @@ const petActions: PetAction[] = [
   { id: "angry", name: "生气", description: "被频繁打扰或拒绝时的反应", color: "#EF4444", skin: "angry", mood: "angry" },
   { id: "shy", name: "害羞", description: "特定互动时的表情", color: "#FFB5D5", skin: "shy", mood: "shy" },
   { id: "sad", name: "难过", description: "心情低落或负面反馈时的表现", color: "#3B82F6", skin: "sad", mood: "sad" },
-  { id: "scornful", name: "傲娇", description: "对特定操作的傲娇反应", color: "#8B5CF6", skin: "contempt", mood: "idle" },
+  { id: "scornful", name: "无语", description: "对特定操作的傲娇反应", color: "#8B5CF6", skin: "contempt", mood: "idle" },
 ];
 
 export function AppearancePage() {
@@ -144,7 +144,7 @@ export function AppearancePage() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 grid-cols-2 gap-6">
         <div className="space-y-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -187,6 +187,7 @@ export function AppearancePage() {
                     {/* {currentAction.name}状态
                     {images[selectedAction] ? " · 自定义预览" : " · 后端默认形象"} */}
                   </div>
+                  <div className="text-xs text-muted-foreground truncate">{currentAction.description}</div>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -227,7 +228,7 @@ export function AppearancePage() {
           <h3>动作映射</h3>
           <p className="text-sm text-muted-foreground mb-6">为每个动作配置专属形象！</p>
 
-          <div className="space-y-3 max-h-[560px] overflow-y-auto pr-1">
+          <div className="space-y-3 max-h-[560px] overflow-y-auto p-2">
             {petActions.map((action, index) => {
               const image = images[action.id] ?? petSkins[action.skin];
               return (
@@ -236,16 +237,14 @@ export function AppearancePage() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 + 0.3 }}
-                  whileHover={{ x: 2 }}
+                  whileHover={{ x: 4, scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   className={`glass rounded-2xl p-4 cursor-pointer transition-all relative overflow-hidden ${selectedAction === action.id ? "ring-2 ring-primary ring-inset" : ""
                     }`}
                   onClick={() => setSelectedAction(action.id)}
                   style={{
                     background:
-                      selectedAction === action.id
-                        ? `linear-gradient(135deg, ${action.color}15, transparent)`
-                        : undefined,
+                      selectedAction === action.id ? `linear-gradient(135deg, ${action.color}15, transparent)` : undefined,
                   }}
                 >
                   <div className="flex items-center justify-between relative z-10 gap-3">
@@ -255,7 +254,6 @@ export function AppearancePage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-medium">{action.name}</div>
-                        <div className="text-xs text-muted-foreground truncate">{action.description}</div>
                       </div>
                     </div>
 
