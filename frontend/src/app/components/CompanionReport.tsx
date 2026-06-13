@@ -98,7 +98,7 @@ export function CompanionReport() {
                   </motion.span>
                 </div>
 
-                <div className="text-2xl font-medium mb-1">{item.value}</div>
+                <div className="text-2lg font-medium mb-1">{item.value}</div>
                 <div className="text-sm text-muted-foreground">
                   {item.label}
                 </div>

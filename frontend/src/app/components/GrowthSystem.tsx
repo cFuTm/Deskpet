@@ -74,19 +74,17 @@ export function GrowthSystem() {
             <div key={level.level} className="relative flex flex-col items-center">
               {index > 0 && (
                 <div
-                  className={`absolute right-1/2 top-4 h-0.5 w-full ${
-                    level.unlocked ? "bg-primary" : "bg-secondary"
-                  }`}
+                  className={`absolute right-1/2 top-4 h-0.5 w-full ${level.unlocked ? "bg-primary" : "bg-secondary"
+                    }`}
                   style={{ zIndex: 0 }}
                 />
               )}
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                className={`w-8 h-8 rounded-full flex items-center justify-center relative z-10 ${
-                  level.unlocked
+                className={`w-8 h-8 rounded-full flex items-center justify-center relative z-10 ${level.unlocked
                     ? "bg-primary text-primary-foreground shadow-lg shadow-primary/50"
                     : "bg-secondary text-muted-foreground"
-                }`}
+                  }`}
               >
                 {level.unlocked ? <Star className="w-4 h-4 fill-current" /> : <Lock className="w-4 h-4" />}
               </motion.div>
@@ -106,9 +104,8 @@ export function GrowthSystem() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 + 0.7 }}
               whileHover={{ scale: action.unlocked ? 1.05 : 1 }}
-              className={`glass rounded-xl p-3 text-center relative overflow-hidden ${
-                action.unlocked ? "cursor-pointer" : "opacity-50 cursor-not-allowed"
-              }`}
+              className={`glass rounded-xl p-3 text-center relative overflow-hidden ${action.unlocked ? "cursor-pointer" : "opacity-50 cursor-not-allowed"
+                }`}
             >
               {action.unlocked ? (
                 <Sparkles className="w-4 h-4 mx-auto mb-1 text-primary" />

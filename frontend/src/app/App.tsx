@@ -5,7 +5,6 @@ import { DashboardPage } from "./components/pages/DashboardPage";
 import { AppearancePage } from "./components/pages/AppearancePage";
 import { ModelConfigPage } from "./components/pages/ModelConfigPage";
 import { AdvancedSettingsPage } from "./components/pages/AdvancedSettingsPage";
-import { Button } from "./components/ui/button";
 import bgImage from "../assets/background.png";
 import appIcon from "../assets/app.png";
 
@@ -14,8 +13,8 @@ type Page = "dashboard" | "appearance" | "model" | "settings";
 const navigationItems = [
   { id: "dashboard" as Page, name: "状态总览", icon: LayoutDashboard },
   { id: "appearance" as Page, name: "形象管理", icon: Palette },
-  { id: "model" as Page, name: "AI模型配置", icon: Brain },
-  { id: "settings" as Page, name: "高级设置", icon: Settings },
+  { id: "model" as Page, name: "模型与性格配置", icon: Brain },
+  { id: "settings" as Page, name: "更多设置", icon: Settings },
 ];
 
 export default function App() {
@@ -86,9 +85,8 @@ export default function App() {
           >
             <div className="flex items-center gap-3 mb-2">
               <motion.div
-                animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-success flex items-center justify-center overflow-hidden"
+                className="w-10 h-10 rounded-2xl from-primary to-success flex items-center justify-center overflow-hidden"
               >
                 <img src={appIcon} alt="TalkBuddy" className="w-8 h-8 rounded-xl object-cover" />
               </motion.div>
@@ -112,9 +110,8 @@ export default function App() {
                   whileHover={{ x: 4, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setCurrentPage(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all relative overflow-hidden ${
-                    isActive ? "text-sidebar-primary-foreground shadow-lg" : "text-sidebar-foreground"
-                  }`}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all relative overflow-hidden ${isActive ? "text-sidebar-primary-foreground shadow-lg" : "text-sidebar-foreground"
+                    }`}
                 >
                   {isActive && (
                     <motion.div
@@ -136,24 +133,6 @@ export default function App() {
             transition={{ delay: 0.4 }}
             className="p-4 border-t border-sidebar-border/50 space-y-3"
           >
-            <div className="flex items-center justify-between px-4 py-2 glass rounded-2xl">
-              <span className="text-sm text-sidebar-foreground">深夜模式</span>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Button variant="ghost" size="icon" onClick={() => setIsDark(!isDark)} className="h-8 w-8">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={isDark ? "dark" : "light"}
-                      initial={{ rotate: -180, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 180, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                    </motion.div>
-                  </AnimatePresence>
-                </Button>
-              </motion.div>
-            </div>
 
             <motion.div
               whileHover={{ scale: 1.02 }}

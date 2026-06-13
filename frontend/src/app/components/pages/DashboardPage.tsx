@@ -18,7 +18,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 gap-6">
         <EmotionStatusCenter />
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 xl:grid-cols-2 gap-6">
           <CompanionReport />
           <GrowthSystem />
         </div>
