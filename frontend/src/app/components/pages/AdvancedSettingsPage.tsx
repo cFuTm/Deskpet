@@ -24,7 +24,7 @@ export function AdvancedSettingsPage() {
         <h2 className="mb-2">更多设置</h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 xl:grid-cols-2 gap-6">
         <div className="space-y-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -102,20 +102,20 @@ export function AdvancedSettingsPage() {
           </motion.div>
 
           <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="flex justify-end gap-3"
-      >
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button variant="outline" className="glass">
-            重置为默认
-          </Button>
-        </motion.div>
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button>保存所有设置</Button>
-        </motion.div>
-      </motion.div>
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex justify-end gap-3"
+          >
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="outline" className="glass">
+                重置为默认
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button>保存所有设置</Button>
+            </motion.div>
+          </motion.div>
         </div>
 
         <div className="space-y-6">
