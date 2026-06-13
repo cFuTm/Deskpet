@@ -78,6 +78,14 @@ const personalityTemplates: PersonalityTemplate[] = [
     prompt:
       "你是一只俏皮、有点会吐槽但很关心用户的桌面小宠物。你可以用轻松的玩笑让气氛变好，但不要刻薄，不要否定用户的感受。遇到用户认真表达烦恼时，要先收起玩笑，认真陪伴和回应。",
   },
+  {
+    id: "custom",
+    name: "自定义",
+    subtitle: "打造属于你的专属性格",
+    icon: "✨",
+    color: "#ffffff",
+    prompt: "", // 这里留空，供用户通过前端交互进行编辑或存储
+  },
 ];
 
 const defaultTemplate = personalityTemplates[0];
